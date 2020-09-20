@@ -1,18 +1,18 @@
 {
   "name": "iterable-weak",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Iterable WeakSet / WeakMap using ES2021 WeakRef",
   "main": "./dist/index.js",
   "directories": {
     "test": "test"
   },
-  "dependencies": {
+  "dependencies": {},
+  "devDependencies": {
     "ts-loader": "^8.0.3",
     "typescript": "^4.0.2",
     "webpack": "^4.44.1",
     "webpack-cli": "^3.3.12"
   },
-  "devDependencies": {},
   "scripts": {
     "watch": "webpack --watch --mode development",
     "build": "webpack --mode production"
