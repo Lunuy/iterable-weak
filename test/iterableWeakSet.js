@@ -1,8 +1,5 @@
-const { IterableWeakSet, IterableWeakMap } = require("../dist/index");
-
-function sleep(ms) {
-    return new Promise(solve => setTimeout(solve, ms));
-}
+const { IterableWeakSet } = require("../dist/index");
+const { sleep } = require("./util");
 
 let a = {
     jam: 2
@@ -13,8 +10,7 @@ let b = {
 };
 
 
-// const obj = new IterableWeakSet([a,b]);
-const obj = new IterableWeakMap([[a, 3], [b, "AA"]]);
+const obj = new IterableWeakSet([a,b]);
 
 setInterval(() => {
     console.log(JSON.stringify(Array.from(obj.entries())), obj.size);
@@ -26,5 +22,3 @@ setInterval(() => {
     await sleep(1000);
     a = undefined;
 })();
-
-
