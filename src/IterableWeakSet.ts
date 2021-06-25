@@ -20,10 +20,13 @@ class IterableWeakSet<T extends object> {
         return this.refSet.size;
     }
     add(value : T) {
+        if(this.has(value))
+            return this;
         const ref = new WeakRef(value);
         this.refSet.add(ref);
         this.toRefWeakMap.set(value, ref);
         this.finalizationRegistry.register(value, ref, ref);
+        return this;
     }
     clear() {
         for(const value of this.values())

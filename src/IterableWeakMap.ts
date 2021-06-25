@@ -52,6 +52,8 @@ class IterableWeakMap<K extends object, V> {
         }
     }
     set(key : K, value : V) {
+        if(this.has(key))
+            this.delete(key);
         const ref = new WeakRef(key);
         this.toValueMap.set(ref, value);
         this.toRefWeakMap.set(key, ref);
