@@ -28,8 +28,9 @@ class IterableWeakMap<K extends object, V> {
         this.toValueMap.delete(ref);
         this.toRefWeakMap.delete(key);
         this.finalizationRegistry.unregister(ref);
+        return true;
     }
-    *entries() : Generator<[K, V], any, unknown> {
+    *entries() : IterableIterator<[K, V]> {
         for(const ref of this.toValueMap.keys())
             yield [ref.deref(), this.toValueMap.get(ref)];
     }
@@ -55,6 +56,7 @@ class IterableWeakMap<K extends object, V> {
         this.toValueMap.set(ref, value);
         this.toRefWeakMap.set(key, ref);
         this.finalizationRegistry.register(key, ref, ref);
+        return this;
     }
     values() {
         return this.toValueMap.values();
@@ -62,7 +64,7 @@ class IterableWeakMap<K extends object, V> {
 }
 
 interface IterableWeakMap<K extends object, V> {
-    [Symbol.iterator](): Generator<[K, V], void, unknown>
+    [Symbol.iterator](): IterableIterator<[K, V]>
 }
 
 IterableWeakMap.prototype[Symbol.iterator]
