@@ -1,7 +1,6 @@
 
 import WeakRef from "./WeakRef";
 import FinalizationRegistry from "./FinalizationRegistry";
-import getIterableLength from "./getIterableLength";
 
 class IterableWeakSet<T extends object> {
     static [Symbol.species] = IterableWeakSet;
@@ -18,7 +17,7 @@ class IterableWeakSet<T extends object> {
         this.refSet.delete(ref);
     }
     get size() {
-        return getIterableLength(this.values());
+        return this.refSet.size;
     }
     add(value : T) {
         const ref = new WeakRef(value);
