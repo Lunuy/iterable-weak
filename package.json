@@ -1,6 +1,6 @@
 {
   "name": "iterable-weak",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Iterable WeakSet / WeakMap using ES2021 WeakRef",
   "main": "./dist/index.js",
   "directories": {
